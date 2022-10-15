@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "180181596264",
+    "project_id": "fir-notes-d6fb7",
+    "storage_bucket": "fir-notes-d6fb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180181596264:android:5177dc41caf428b56163dd",
+        "android_client_info": {
+          "package_name": "com.joydas1902.firebasenotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180181596264-1rajv2n5eo4at5e5h39clot2jmqvs476.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSoFrSjVfC1jYH4DdkG4jf3Pzb6nzQFTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180181596264-1rajv2n5eo4at5e5h39clot2jmqvs476.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
