@@ -51,13 +51,13 @@ public class CreateNote extends AppCompatActivity {
             }
             else{
                 // store the data on cloud firestore
-                DocumentReference documentReference = firebaseFirestore.collection("notes")
-                        .document(firebaseUser.getUid()).collection("myNotes").document();
+                DocumentReference documentReference = firebaseFirestore.collection("All Notes")
+                        .document(firebaseUser.getUid()).collection("Notes").document();
                 Map<String, Object> note = new HashMap<>();
                 note.put("title", title);
                 note.put("content", content);
                 documentReference.set(note).addOnSuccessListener(unused -> {
-                    Toast.makeText(getApplicationContext(), "Note created", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Created", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CreateNote.this, NotesActivity.class));
                 }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(), "Failed to create note, check internet", Toast.LENGTH_SHORT).show());
             }
@@ -66,9 +66,7 @@ public class CreateNote extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
-            onBackPressed();
-        }
+        if(item.getItemId() == android.R.id.home){onBackPressed();}
         return super.onOptionsItemSelected(item);
     }
 

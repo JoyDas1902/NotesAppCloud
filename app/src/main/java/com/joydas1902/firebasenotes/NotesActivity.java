@@ -49,8 +49,8 @@ public class NotesActivity extends AppCompatActivity {
 
         mcreateNoteBtn.setOnClickListener(view -> startActivity(new Intent(NotesActivity.this, CreateNote.class)));
 
-        Query query = firebaseFirestore.collection("notes").document(firebaseUser.getUid())
-                .collection("myNotes").orderBy("title", Query.Direction.ASCENDING);
+        Query query = firebaseFirestore.collection("All Notes").document(firebaseUser.getUid())
+                .collection("Notes").orderBy("title", Query.Direction.ASCENDING);
 
         FirestoreRecyclerOptions<FirebaseModel> allUserNotes = new FirestoreRecyclerOptions
                 .Builder<FirebaseModel>().setQuery(query, FirebaseModel.class).build();
@@ -81,8 +81,8 @@ public class NotesActivity extends AppCompatActivity {
                         return false;
                     });
                     popupMenu.getMenu().add("Delete").setOnMenuItemClickListener(menuItem -> {
-                        DocumentReference documentReference = firebaseFirestore.collection("notes")
-                                .document(firebaseUser.getUid()).collection("myNotes").document(noteId);
+                        DocumentReference documentReference = firebaseFirestore.collection("All Notes")
+                                .document(firebaseUser.getUid()).collection("Notes").document(noteId);
                         documentReference.delete().addOnFailureListener(e -> Toast.makeText(getApplicationContext(), "Failed to delete", Toast.LENGTH_SHORT).show());
                         return false;
                     });

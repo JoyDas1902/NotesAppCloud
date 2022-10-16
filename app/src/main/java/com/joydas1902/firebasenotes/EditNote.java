@@ -58,8 +58,8 @@ public class EditNote extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "All fields are required", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    DocumentReference documentReference = firebaseFirestore.collection("notes").document(firebaseUser.getUid())
-                            .collection("myNotes").document(intent.getStringExtra("noteId"));
+                    DocumentReference documentReference = firebaseFirestore.collection("All Notes").document(firebaseUser.getUid())
+                            .collection("Notes").document(intent.getStringExtra("noteId"));
                     Map<String, Object> note = new HashMap<>();
                     note.put("title", newTitle);
                     note.put("content", newContent);
@@ -74,9 +74,7 @@ public class EditNote extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
-            onBackPressed();
-        }
+        if(item.getItemId() == android.R.id.home){onBackPressed();}
         return super.onOptionsItemSelected(item);
     }
 
