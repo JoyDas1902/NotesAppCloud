@@ -6,9 +6,12 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         // User is already logged in
-        if(firebaseUser != null){
+        if (firebaseUser != null) {
             finish();
             startActivity(new Intent(MainActivity.this, NotesActivity.class));
         }
@@ -42,14 +45,14 @@ public class MainActivity extends AppCompatActivity {
             String email = mloginEmail.getText().toString().trim();
             String password = mloginPassword.getText().toString().trim();
 
-            if(email.isEmpty() || password.isEmpty()){
+            if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "All fields are required", Toast.LENGTH_SHORT).show();
             } else {
                 // Login the user
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         checkEmailVerification();
-                    } else{
+                    } else {
                         Toast.makeText(getApplicationContext(), "Account does't exist", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -60,11 +63,10 @@ public class MainActivity extends AppCompatActivity {
     private void checkEmailVerification() {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         assert firebaseUser != null;
-        if(firebaseUser.isEmailVerified()){
-            Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_SHORT).show();
+        if (firebaseUser.isEmailVerified()) {
             finish();
             startActivity(new Intent(MainActivity.this, NotesActivity.class));
-        } else{
+        } else {
             Toast.makeText(getApplicationContext(), "Please verify your email", Toast.LENGTH_SHORT).show();
             firebaseAuth.signOut();
         }
